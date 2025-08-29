@@ -1,0 +1,17 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "rules": {
+    "react/no-unescaped-entities": "warn",
+    "@next/next/no-img-element": "warn",
+    "@typescript-eslint/no-unused-vars": "warn"
+  }
+}
