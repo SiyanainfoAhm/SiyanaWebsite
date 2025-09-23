@@ -54,7 +54,7 @@ export default function ContactPage() {
       formDataToSubmit.append('message', formData.message);
 
       // Submit to the specified form storage address
-      const response = await fetch('https://readdy.ai/api/form/d2nuteik0nafr2t3j6b0', {
+      const response = await fetch('https://readdy.ai/api/form/d391h36n1prrg8d10ahg', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -89,8 +89,44 @@ export default function ContactPage() {
     }));
   };
 
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Siyana Info Solutions",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1302, 13th Floor, Shivalik Shilp, ISCON Circle, SG Highway",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "postalCode": "380015",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-99746-31174",
+        "contactType": "customer service",
+        "email": "hr@siyanainfo.com",
+        "availableLanguage": "English",
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(contactSchema)
+        }}
+      />
       <Header />
       
       <div className="pt-32 pb-20 bg-gradient-to-br from-[#001d3f] to-[#041f4a]">

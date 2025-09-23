@@ -90,8 +90,44 @@ export default function BlogPage() {
   const featuredPost = blogPosts.find(post => post.featured);
   const regularPosts = filteredPosts.filter(post => !post.featured);
 
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Siyana Info Solutions Blog",
+    "description": "IT industry insights, technology trends, and best practices from Siyana Info Solutions experts",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Siyana Info Solutions"
+    },
+    "blogPost": blogPosts.map(post => ({
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": {
+        "@type": "Organization",
+        "name": "Siyana Info Solutions"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Siyana Info Solutions"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${post.id}`
+      },
+      "image": post.thumbnail
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogSchema)
+        }}
+      />
       <Header />
       
       <div className="pt-32 pb-20 bg-gradient-to-br from-[#001d3f] to-[#041f4a]">

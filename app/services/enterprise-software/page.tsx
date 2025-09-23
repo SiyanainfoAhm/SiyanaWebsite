@@ -69,8 +69,30 @@ const caseStudies = [
 ];
 
 export default function EnterpriseSoftwarePage() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Enterprise Software Development",
+    "description": "Build scalable, secure enterprise solutions that transform your business operations. Custom ERP systems, government portals, and mission-critical applications.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Siyana Info Solutions"
+    },
+    "serviceType": "Enterprise Software Development",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Gujarat, India"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema)
+        }}
+      />
       <Header />
       
       <div 
@@ -163,7 +185,7 @@ export default function EnterpriseSoftwarePage() {
                 <div 
                   className="h-64 bg-cover bg-center"
                   style={{
-                    backgroundImage: `url('https://readdy.ai/api/search-image?query=${encodeURIComponent(study.image)}&width=600&height=400&seq=case${index}&orientation=landscape')`
+                    backgroundImage: `url('https://readdy.ai/api/search-image?query=$%7BencodeURIComponent%28study.image%29%7D&width=600&height=400&seq=case${index}&orientation=landscape')`
                   }}
                 ></div>
                 <div className="p-8">

@@ -74,8 +74,42 @@ const portfolio = [
 ];
 
 export default function WebDevelopmentPage() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Web Development Services",
+    "description": "Professional web development services including responsive websites, web applications, e-commerce platforms, and CMS solutions",
+    "provider": {
+      "@type": "Organization",
+      "name": "Siyana Info Solutions"
+    },
+    "serviceType": "Web Development",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Gujarat, India"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Web Development Services",
+      "itemListElement": services.map((service, index) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": service.title,
+          "description": service.description
+        }
+      }))
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema)
+        }}
+      />
       <Header />
       
       <div 
@@ -168,7 +202,7 @@ export default function WebDevelopmentPage() {
                 <div 
                   className="h-48 bg-cover bg-center"
                   style={{
-                    backgroundImage: `url('https://readdy.ai/api/search-image?query=${project.image}&width=400&height=300&seq=portfolio${index}&orientation=landscape')`
+                    backgroundImage: `url('https://readdy.ai/api/search-image?query=$%7Bproject.image%7D&width=400&height=300&seq=portfolio${index}&orientation=landscape')`
                   }}
                 ></div>
                 <div className="p-6">
@@ -225,7 +259,7 @@ export default function WebDevelopmentPage() {
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Build Your Web Solution?</h2>
           <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
-            Let's create a powerful web presence that drives your business forward with modern, responsive design and functionality.
+            Let&apos;s create a powerful web presence that drives your business forward with modern, responsive design and functionality.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link 

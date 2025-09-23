@@ -9,7 +9,7 @@ export default function AboutPage() {
     {
       icon: 'ri-heart-3-line',
       title: 'People First',
-      description: 'We believe our people are our greatest asset. We invest in their growth, well-being, and professional development while fostering an inclusive, collaborative environment.'
+      description: 'We believe our people are the greatest asset. We invest in their growth, well-being, and professional development while fostering an inclusive, collaborative environment.'
     },
     {
       icon: 'ri-handshake-line',
@@ -38,8 +38,35 @@ export default function AboutPage() {
     }
   ];
 
+  const aboutPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Siyana Info Solutions",
+      "foundingDate": "2009",
+      "description": "For over 15 years, we have been dedicated to empowering government and enterprise organizations through innovative technology solutions, fostering collaboration and delivering exceptional results that serve the public good.",
+      "numberOfEmployees": "100+",
+      "awards": ["Excellence in Government IT Solutions Award"],
+      "knowsAbout": [
+        "Enterprise Software Development",
+        "Government Digital Transformation",
+        "Web Development",
+        "Mobile App Development",
+        "Digital Marketing",
+        "Business Intelligence"
+      ]
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(aboutPageSchema)
+        }}
+      />
       <Header />
       
       {/* Hero Section */}
